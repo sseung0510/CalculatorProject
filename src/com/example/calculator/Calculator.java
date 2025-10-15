@@ -1,7 +1,47 @@
 package com.example.calculator;
 
+import java.util.ArrayList;
+
 public class Calculator {
-    public static void main(String[] args) {
-        System.out.println("계산기 과제 시작");
+    // 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성
+    private ArrayList<Integer> result = new ArrayList<>();
+
+    // 기능
+    public ArrayList<Integer> calculate(int num1, int num2, char operator) {
+        int calcResult = 0;
+
+        // num1, num2와 operator로 연산 진행
+        switch(operator){
+            case '+': calcResult = num1 + num2;
+                break;
+            case '-': calcResult = num1 - num2;
+                break;
+            case '*': calcResult = num1 * num2;
+                break;
+            case '/':
+                try { // 0으로 나누면 ArithmeticException발생 예외처리
+                    calcResult = num1 / num2;
+                } catch (ArithmeticException e) {
+                    System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                }
+                break;
+        }
+
+        result.add(calcResult);
+
+        return result;
     }
+
+    // Getter 메서드 구현
+    public ArrayList<Integer> getResult() {
+        return result;
+    }
+
+    // Setter 메서드 구현
+    public void setResult(ArrayList<Integer> result) {
+        this.result = result;
+    }
+
+
+
 }
