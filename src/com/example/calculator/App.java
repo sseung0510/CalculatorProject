@@ -44,6 +44,9 @@ public class App {
             System.out.println("결과: " + num1 + " " + operator + " " + num2 + " = " + result);
 
             System.out.println("더 계산하시겠습니까? 계속 하시려면 아무거나 입력해주세요. (exit 입력 시 종료)");
+
+            calc.removeResult();
+
             String exit = sc.next();
             if (exit.equals("exit")) {
                 break;
