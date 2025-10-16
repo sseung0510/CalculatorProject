@@ -17,7 +17,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
 
         while (true) { // exit 입력받기 전까지 무한 반복
-
+            System.out.println("============================================================================");
             // 양의 정수(0)를 입력받기
             System.out.print("첫 번째 값를 입력하세요: ");
             Double num1 = sc.nextDouble(); // 받은 값을 num1에 담기
@@ -46,19 +46,25 @@ public class App {
             ArrayList<Double> result = calc.getResult(); // 반환된 값을 result에 담기
             calc.setResult(result); // 결과 셋팅
 
-            System.out.println("결과: " + num1 + " " + operator + " " + num2 + " = " + result.get(0));
-
-
+            System.out.println("============================================================================");
+            // ArrayList의 마지막 값을 가져와서 출력하는 코드 => result.get(result.size() - 1)
+            System.out.println("결과: " + num1 + " " + operator + " " + num2 + " = " + result.get(result.size() - 1));
 
             System.out.println("더 계산하시겠습니까? 계속 하시려면 아무거나 입력해주세요. (exit 입력 시 종료)");
-
-            calc.removeResult();
-
             String exit = sc.next();
+
             if (exit.equals("exit")) { // exit를 입력받으면 while문 탈출
                 break;
             }
         }
+
+        System.out.println("============================================================================");
+        System.out.println("하나의 값을 입력해주세요. 연산된 결과들 중 그보다 큰 값이 조회됩니다.");
+        System.out.print("값를 입력하세요: ");
+        Double findNum = sc.nextDouble();
+
+        ArrayList<Double> findResult = calc.findAllResult(findNum); // findAllResult를 호출 후 받아온 값 저장
+        System.out.println(findNum + "보다 큰 결과: " + findResult);
     }
 }
 
