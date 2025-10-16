@@ -53,5 +53,4 @@ public class Calculator {
     public void removeResult() {
         result.remove(0); // result에 담겨있던 값 제거
     }
-
 }
