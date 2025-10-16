@@ -51,7 +51,7 @@ public class Calculator {
      * 저장된 데이터를 삭제하는 기능
      */
     public void removeResult() {
-        result.remove(result.size()-1); // result에 담겨있던 값 제거
+        result.remove(0); // result에 담겨있던 값 제거
     }
 
 }
