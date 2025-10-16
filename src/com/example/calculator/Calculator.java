@@ -7,14 +7,10 @@ public class Calculator {
     private ArrayList<Integer> result = new ArrayList<>();
 
     /**
-     * 계산기 연산 기능
-     * @param num1
-     * @param num2
-     * @param operator
-     * @return
+     * 계산 기능 메서드
      */
     public ArrayList<Integer> calculate(int num1, int num2, char operator) {
-        int calcResult = 0;
+        int calcResult = 0; // 연산 결과 담는 변수
 
         // num1, num2와 operator로 연산 진행
         switch(operator){
