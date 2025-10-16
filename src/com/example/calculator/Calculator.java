@@ -6,7 +6,13 @@ public class Calculator {
     // 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성
     private ArrayList<Integer> result = new ArrayList<>();
 
-    // 기능
+    /**
+     * 계산기 연산 기능
+     * @param num1
+     * @param num2
+     * @param operator
+     * @return
+     */
     public ArrayList<Integer> calculate(int num1, int num2, char operator) {
         int calcResult = 0;
 
@@ -27,8 +33,8 @@ public class Calculator {
                 break;
         }
 
-        result.add(calcResult);
-        return result;
+        result.add(calcResult); // 컬렉션에 값 추가
+        return result; // 호출한 곳으로 result 반환
     }
 
     // Getter 메서드 구현
@@ -41,9 +47,11 @@ public class Calculator {
         this.result = result;
     }
 
-    // 가장 먼저 저장된 데이터를 삭제하는 기능
+    /**
+     * 저장된 데이터를 삭제하는 기능
+     */
     public void removeResult() {
-        result.remove(result.size()-1);
+        result.remove(result.size()-1); // result에 담겨있던 값 제거
     }
 
 }
