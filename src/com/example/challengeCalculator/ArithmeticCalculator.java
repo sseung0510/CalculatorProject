@@ -2,9 +2,10 @@ package com.example.challengeCalculator;
 
 import java.util.ArrayList;
 
-public class ArithmeticCalculator {
+public class ArithmeticCalculator<T extends Number> { // 이거를 숫자의 형태로만 수정 extends 활용
+
     // 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성
-    private ArrayList<Integer> result = new ArrayList<>();
+    private ArrayList<Double> result = new ArrayList<>();
 
     OperatorType sum = OperatorType.SUM;
     OperatorType sub = OperatorType.SUB;
@@ -12,20 +13,20 @@ public class ArithmeticCalculator {
     OperatorType div = OperatorType.DIV;
 
     // 기능
-    public ArrayList<Integer> calculate(int num1, int num2, char operator) {
-        int calcResult = 0;
+    public ArrayList<Double> calculate(T num1, T num2, char operator) {
+        double calcResult = 0;
 
         // num1, num2와 operator로 연산 진행
         switch(operator){
-            case '+': calcResult = sum.apply(num1, num2);
+            case '+': calcResult = sum.apply((Double)num1, (Double)num2);
                 break;
-            case '-': calcResult = sub.apply(num1, num2);
+            case '-': calcResult = sub.apply((Double)num1, (Double)num2);
                 break;
-            case '*': calcResult = mul.apply(num1, num2);
+            case '*': calcResult = mul.apply((Double)num1, (Double)num2);
                 break;
             case '/':
                 try { // 0으로 나누면 ArithmeticException발생 예외처리
-                    calcResult = div.apply(num1, num2);
+                    calcResult = div.apply((Double)num1,(Double)num2);
                 } catch (ArithmeticException e) {
                     System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                 }
@@ -37,12 +38,12 @@ public class ArithmeticCalculator {
     }
 
     // Getter 메서드 구현
-    public ArrayList<Integer> getResult() {
+    public ArrayList<Double> getResult() {
         return result;
     }
 
     // Setter 메서드 구현
-    public void setResult(ArrayList<Integer> result) {
+    public void setResult(ArrayList<Double> result) {
         this.result = result;
     }
 
@@ -52,5 +53,6 @@ public class ArithmeticCalculator {
     public void removeResult() {
         result.remove(0); // result에 담겨있던 값 제거
     }
+
 
 }

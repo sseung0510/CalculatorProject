@@ -2,6 +2,7 @@ package com.example.challengeCalculator;
 
 import com.example.calculator.Calculator;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class App {
         System.out.println("계산기 과제 - 도전!!");
 
         // Calcultor 인스턴스 생성
-        ArithmeticCalculator calc = new ArithmeticCalculator();
+        ArithmeticCalculator<Double> calc = new ArithmeticCalculator<>();
 
         // 스캐너 객체 생성
         Scanner sc = new Scanner(System.in);
@@ -19,17 +20,17 @@ public class App {
 
             // 양의 정수(0)를 입력받기
             System.out.print("첫 번째 값를 입력하세요: ");
-            int num1 = sc.nextInt(); // 받은 값을 num1에 담기
+            Double num1 = sc.nextDouble(); // 받은 값을 num1에 담기
             while (num1 < 0) { // 음의 값이 들어오면 다시 입력받기
                 System.out.print("0 이상의 값만 입력해주세요.\n첫 번째 값을 입력하세요: ");
-                num1 = sc.nextInt(); // 받은 값을 num1에 담기
+                num1 = sc.nextDouble(); // 받은 값을 num1에 담기
             }
 
             System.out.print("두 번째 값를 입력하세요: ");
-            int num2 = sc.nextInt(); // 받은 값을 num2에 담기
+            Double num2 = sc.nextDouble(); // 받은 값을 num2에 담기
             while (num2 < 0) { // 음의 값이 들어오면 다시 입력받기
                 System.out.print("0 이상의 값만 입력해주세요.\n두 번째 값을 입력하세요: ");
-                num2 = sc.nextInt(); // 받은 값을 num2에 담기
+                num2 = sc.nextDouble(); // 받은 값을 num2에 담기
             }
 
             // 사칙연산 기호 입력받기
@@ -42,14 +43,16 @@ public class App {
             }
 
             calc.calculate(num1, num2, operator); // Calculator의 클래스에서 calculate 메서드 호출
-            ArrayList<Integer> result = calc.getResult(); // 반환된 값을 result에 담기
+            ArrayList<Double> result = calc.getResult(); // 반환된 값을 result에 담기
             calc.setResult(result); // 결과 셋팅
 
             System.out.println("결과: " + num1 + " " + operator + " " + num2 + " = " + result.get(0));
 
+
+
             System.out.println("더 계산하시겠습니까? 계속 하시려면 아무거나 입력해주세요. (exit 입력 시 종료)");
 
-            calc.removeResult(); // Calculator의 클래스에서 removeResult 메서드 호출
+            calc.removeResult();
 
             String exit = sc.next();
             if (exit.equals("exit")) { // exit를 입력받으면 while문 탈출
