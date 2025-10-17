@@ -64,6 +64,6 @@ public class App {
         Double findNum = sc.nextDouble();
 
         ArrayList<Double> findResult = calc.findAllResult(findNum); // findAllResult를 호출 후 받아온 값 저장
-        System.out.println(findNum + "보다 큰 결과: " + findResult.get(0));
+        System.out.println(findNum + "보다 큰 결과: " + findResult);
     }
 }

@@ -23,17 +23,17 @@ public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫�
         // num1, num2와 operator로 연산 진행
         switch(operator){
             case '+':
-                calcResult = sum.apply((Double)num1, (Double)num2);
+                calcResult = sum.apply(num1.doubleValue(), num2.doubleValue());
                 break;
             case '-':
-                calcResult = sub.apply((Double)num1, (Double)num2);
+                calcResult = sub.apply(num1.doubleValue(), num2.doubleValue());
                 break;
             case '*':
-                calcResult = mul.apply((Double)num1, (Double)num2);
+                calcResult = mul.apply(num1.doubleValue(), num2.doubleValue());
                 break;
             case '/':
                 try { // 0으로 나누면 ArithmeticException발생 예외처리
-                    calcResult = div.apply((Double)num1,(Double)num2);
+                    calcResult = div.apply(num1.doubleValue(), num2.doubleValue());
                 } catch (ArithmeticException e) {
                     System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                 }
