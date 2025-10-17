@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) {
         System.out.println("계산기 과제 - 도전!!");
 
-        // Calcultor 인스턴스 생성
+        // ArithmeticCalculator 인스턴스 생성
         ArithmeticCalculator<Double> calc = new ArithmeticCalculator<>();
 
         // 스캐너 객체 생성
@@ -42,7 +42,7 @@ public class App {
                 operator = sc.next().charAt(0);
             }
 
-            calc.calculate(num1, num2, operator); // Calculator의 클래스에서 calculate 메서드 호출
+            calc.calculate(num1, num2, operator); // ArithmeticCalculator 클래스에서 calculate 메서드 호출
             ArrayList<Double> result = calc.getResult(); // 반환된 값을 result에 담기
             calc.setResult(result); // 결과 셋팅
 
@@ -64,7 +64,6 @@ public class App {
         Double findNum = sc.nextDouble();
 
         ArrayList<Double> findResult = calc.findAllResult(findNum); // findAllResult를 호출 후 받아온 값 저장
-        System.out.println(findNum + "보다 큰 결과: " + findResult);
+        System.out.println(findNum + "보다 큰 결과: " + findResult.get(0));
     }
 }
-
