@@ -14,11 +14,14 @@ public class Calculator {
 
         // num1, num2와 operator로 연산 진행
         switch(operator){
-            case '+': calcResult = num1 + num2;
+            case '+':
+                calcResult = num1 + num2;
                 break;
-            case '-': calcResult = num1 - num2;
+            case '-':
+                calcResult = num1 - num2;
                 break;
-            case '*': calcResult = num1 * num2;
+            case '*':
+                calcResult = num1 * num2;
                 break;
             case '/':
                 try { // 0으로 나누면 ArithmeticException발생 예외처리
@@ -28,7 +31,6 @@ public class Calculator {
                 }
                 break;
         }
-
         result.add(calcResult); // 컬렉션에 값 추가
         return result; // 호출한 곳으로 result 반환
     }

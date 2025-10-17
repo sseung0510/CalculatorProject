@@ -22,11 +22,14 @@ public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫�
 
         // num1, num2와 operator로 연산 진행
         switch(operator){
-            case '+': calcResult = sum.apply((Double)num1, (Double)num2);
+            case '+':
+                calcResult = sum.apply((Double)num1, (Double)num2);
                 break;
-            case '-': calcResult = sub.apply((Double)num1, (Double)num2);
+            case '-':
+                calcResult = sub.apply((Double)num1, (Double)num2);
                 break;
-            case '*': calcResult = mul.apply((Double)num1, (Double)num2);
+            case '*':
+                calcResult = mul.apply((Double)num1, (Double)num2);
                 break;
             case '/':
                 try { // 0으로 나누면 ArithmeticException발생 예외처리
@@ -36,7 +39,6 @@ public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫�
                 }
                 break;
         }
-
         result.add(calcResult); // result 컬렉션에 calcResult값 추가
         return result; // 결과 반환
     }
@@ -70,5 +72,4 @@ public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫�
 
         return allResult; // 결과 반환
     }
-
 }

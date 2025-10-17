@@ -14,9 +14,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
 
         while (true) { // exit 입력받기 전까지 무한 반복
-
             System.out.println("============================================================================");
-
             // 양의 정수(0)를 입력받기
             System.out.print("첫 번째 값를 입력하세요: ");
             int num1 = sc.nextInt(); // 받은 값을 num1에 담기
@@ -60,4 +58,3 @@ public class App {
         }
     }
 }
-
