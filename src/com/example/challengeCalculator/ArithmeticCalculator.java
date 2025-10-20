@@ -18,22 +18,24 @@ public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫�
      * 계산 기능 메서드
      */
     public ArrayList<Double> calculate(T num1, T num2, char operator) {
+        double a = num1.doubleValue();
+        double b = num2.doubleValue();
         double calcResult = 0; // 연산 결과 담는 변수
 
         // num1, num2와 operator로 연산 진행
         switch(operator){
             case '+':
-                calcResult = sum.apply(num1.doubleValue(), num2.doubleValue());
+                calcResult = sum.apply(a, b);
                 break;
             case '-':
-                calcResult = sub.apply(num1.doubleValue(), num2.doubleValue());
+                calcResult = sub.apply(a, b);
                 break;
             case '*':
-                calcResult = mul.apply(num1.doubleValue(), num2.doubleValue());
+                calcResult = mul.apply(a, b);
                 break;
             case '/':
                 try { // 0으로 나누면 ArithmeticException발생 예외처리
-                    calcResult = div.apply(num1.doubleValue(), num2.doubleValue());
+                    calcResult = div.apply(a, b);
                 } catch (ArithmeticException e) {
                     System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                 }
