@@ -18,25 +18,29 @@ public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫�
      * 계산 기능 메서드
      */
     public ArrayList<Double> calculate(T num1, T num2, char operator) {
+        double a = num1.doubleValue();
+        double b = num2.doubleValue();
         double calcResult = 0; // 연산 결과 담는 변수
 
         // num1, num2와 operator로 연산 진행
         switch(operator){
-            case '+': calcResult = sum.apply((Double)num1, (Double)num2);
+            case '+':
+                calcResult = sum.apply(a, b);
                 break;
-            case '-': calcResult = sub.apply((Double)num1, (Double)num2);
+            case '-':
+                calcResult = sub.apply(a, b);
                 break;
-            case '*': calcResult = mul.apply((Double)num1, (Double)num2);
+            case '*':
+                calcResult = mul.apply(a, b);
                 break;
             case '/':
                 try { // 0으로 나누면 ArithmeticException발생 예외처리
-                    calcResult = div.apply((Double)num1,(Double)num2);
+                    calcResult = div.apply(a, b);
                 } catch (ArithmeticException e) {
                     System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                 }
                 break;
         }
-
         result.add(calcResult); // result 컬렉션에 calcResult값 추가
         return result; // 결과 반환
     }
@@ -70,5 +74,4 @@ public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫�
 
         return allResult; // 결과 반환
     }
-
 }
