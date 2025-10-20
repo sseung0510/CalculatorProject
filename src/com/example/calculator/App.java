@@ -14,7 +14,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
 
         while (true) { // exit 입력받기 전까지 무한 반복
-
+            System.out.println("============================================================================");
             // 양의 정수(0)를 입력받기
             System.out.print("첫 번째 값를 입력하세요: ");
             int num1 = sc.nextInt(); // 받은 값을 num1에 담기
@@ -43,7 +43,9 @@ public class App {
             ArrayList<Integer> result = calc.getResult(); // 반환된 값을 result에 담기
             calc.setResult(result); // 결과 셋팅
 
-            System.out.println("결과: " + num1 + " " + operator + " " + num2 + " = " + result);
+            System.out.println("============================================================================");
+
+            System.out.println("결과: " + num1 + " " + operator + " " + num2 + " = " + result.get(0));
 
             System.out.println("더 계산하시겠습니까? 계속 하시려면 아무거나 입력해주세요. (exit 입력 시 종료)");
 
@@ -56,4 +58,3 @@ public class App {
         }
     }
 }
-
