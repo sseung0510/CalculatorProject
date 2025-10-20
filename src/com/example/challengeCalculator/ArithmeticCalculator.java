@@ -1,6 +1,8 @@
 package com.example.challengeCalculator;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫자형 클래스만 허용
@@ -18,22 +20,24 @@ public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫�
      * 계산 기능 메서드
      */
     public ArrayList<Double> calculate(T num1, T num2, char operator) {
+        double a = num1.doubleValue();
+        double b = num2.doubleValue();
         double calcResult = 0; // 연산 결과 담는 변수
 
         // num1, num2와 operator로 연산 진행
         switch(operator){
             case '+':
-                calcResult = sum.apply((Double)num1, (Double)num2);
+                calcResult = sum.apply(a, b);
                 break;
             case '-':
-                calcResult = sub.apply((Double)num1, (Double)num2);
+                calcResult = sub.apply(a, b);
                 break;
             case '*':
-                calcResult = mul.apply((Double)num1, (Double)num2);
+                calcResult = mul.apply(a, b);
                 break;
             case '/':
                 try { // 0으로 나누면 ArithmeticException발생 예외처리
-                    calcResult = div.apply((Double)num1,(Double)num2);
+                    calcResult = div.apply(a, b);
                 } catch (ArithmeticException e) {
                     System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                 }
@@ -63,13 +67,36 @@ public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫�
     /**
      * 저장된 연산 결과들 중 입력받은 값보다 큰 결과값 출력 기능
      */
-    public ArrayList<Double> findAllResult(T findNum) {
+    public List<Double> findAllResult(T findNum) {
 
-        ArrayList<Double> allResult = (ArrayList<Double>) result.stream() // 1. 데이터 흐름 준비 단계
+        List<Double> allResult = result.stream() // 1. 데이터 흐름 준비 단계
                 .sorted()                                                 // 2. 데이터 정렬
                 .filter(n -> n > findNum.doubleValue())            // 3. 필터링(findNum과 비교 후 큰 값만)
                 .collect(Collectors.toList());                            // 4. 최종 연산 단계
 
         return allResult; // 결과 반환
+    }
+
+    /**
+     * 값 입력 코드(중복 코드)
+     */
+    public Double inputNum(T num, Scanner sc, String message) {
+        double number = num.doubleValue();
+
+        while(true){
+            if(sc.hasNextDouble()){ // hasNextDouble(): 입력의 다음 토큰이 실수인지 확인 맞으면 true
+                number = sc.nextDouble();
+
+                if (number >= 0) { // 양수 일때 반복문 탈출
+                    break;
+                } else { // 음의 값이 들어오면 다시 입력받기
+                    System.out.print("0 이상의 값만 입력해주세요. " + message);
+                }
+            } else {
+                System.out.print("숫자만 입력해주세요. " + message);
+                sc.next();
+            }
+        }
+        return number;
     }
 }
