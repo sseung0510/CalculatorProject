@@ -1,4 +1,4 @@
-package com.example.calculator;
+package com.example.calculator_lv1;
 
 import java.util.ArrayList;
 import java.util.Scanner;
