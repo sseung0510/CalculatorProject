@@ -1,60 +1,66 @@
 package com.example.calculator_lv1;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("계산기 과제 - 2Lv");
+        System.out.println("계산기 과제 - 1Lv");
 
-        // Calcultor 인스턴스 생성
-        Calculator calc = new Calculator();
-
-        // 스캐너 객체 생성
         Scanner sc = new Scanner(System.in);
 
-        while (true) { // exit 입력받기 전까지 무한 반복
-            System.out.println("============================================================================");
+        while(true) {
+            int result = 0;
+
             // 양의 정수(0)를 입력받기
             System.out.print("첫 번째 값를 입력하세요: ");
-            int num1 = sc.nextInt(); // 받은 값을 num1에 담기
-            while (num1 < 0) { // 음의 값이 들어오면 다시 입력받기
+            int num1 = sc.nextInt();
+            while(num1 < 0){
                 System.out.print("0 이상의 값만 입력해주세요.\n첫 번째 값을 입력하세요: ");
-                num1 = sc.nextInt(); // 받은 값을 num1에 담기
+                num1 = sc.nextInt();
             }
 
             System.out.print("두 번째 값를 입력하세요: ");
-            int num2 = sc.nextInt(); // 받은 값을 num2에 담기
-            while (num2 < 0) { // 음의 값이 들어오면 다시 입력받기
+            int num2 = sc.nextInt();
+            while(num2 < 0){
                 System.out.print("0 이상의 값만 입력해주세요.\n두 번째 값을 입력하세요: ");
-                num2 = sc.nextInt(); // 받은 값을 num2에 담기
+                num2 = sc.nextInt();
             }
 
             // 사칙연산 기호 입력받기
             System.out.print("사칙연산 기호를 입력하세요(+, -, *, /): ");
-            char operator = sc.next().charAt(0); // .charAt(0): 0번째 인덱스 => +- 으로 입력할 경우 첫번째 인덱스인 +를 사용
+            char operator = sc.next().charAt(0);
 
-            while ((operator != '+') && (operator != '-') && (operator != '*') && (operator != '/')) { // 사칙연산이 아닌 값이 들어오면 반복
+            while((operator != '+') && (operator != '-') && (operator != '*') && (operator != '/')){
                 System.out.println("사칙연산 기호가 아닙니다.\n다시 입력해주세요: ");
                 operator = sc.next().charAt(0);
             }
 
-            calc.calculate(num1, num2, operator); // Calculator의 클래스에서 calculate 메서드 호출
-            ArrayList<Integer> result = calc.getResult(); // 반환된 값을 result에 담기
-            calc.setResult(result); // 결과 셋팅
+            // num1, num2와 operator로 연산 진행
+            switch(operator){
+                case '+': result = num1 + num2;
+                    break;
+                case '-': result = num1 - num2;
+                    break;
+                case '*': result = num1 * num2;
+                    break;
+                case '/':
+                    try { // 0으로 나누면 ArithmeticException발생 예외처리
+                        result = num1 / num2;
+                    } catch (ArithmeticException e) {
+                        System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                    }
+                    break;
+            }
 
-            System.out.println("============================================================================");
-
-            System.out.println("결과: " + num1 + " " + operator + " " + num2 + " = " + result.get(0));
+            System.out.println("결과: " + num1 + " " + operator + " " + num2 + " = " + result);
 
             System.out.println("더 계산하시겠습니까? 계속 하시려면 아무거나 입력해주세요. (exit 입력 시 종료)");
-
-            calc.removeResult(); // Calculator의 클래스에서 removeResult 메서드 호출
-
             String exit = sc.next();
-            if (exit.equals("exit")) { // exit를 입력받으면 while문 탈출
+            if(exit.equals("exit")){
                 break;
             }
         }
     }
 }
+
+
