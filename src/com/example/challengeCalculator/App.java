@@ -18,6 +18,8 @@ public class App {
         // 스캐너 객체 생성
         Scanner sc = new Scanner(System.in);
 
+        ArrayList<Double> result;
+
         while (true) { // exit 입력받기 전까지 무한 반복
             System.out.println("============================================================================");
             // 양의 정수(0)를 입력받기
@@ -51,7 +53,7 @@ public class App {
             }
 
             calc.calculate(num1, num2, operator); // ArithmeticCalculator 클래스에서 calculate 메서드 호출
-            ArrayList<Double> result = calc.getResult(); // 반환된 값을 result에 담기
+            result = calc.getResult(); // 반환된 값을 result에 담기
             calc.setResult(result); // 결과 셋팅
 
             System.out.println("============================================================================");
@@ -68,8 +70,9 @@ public class App {
 
         System.out.println("============================================================================");
         System.out.println("하나의 값을 입력해주세요. 연산된 결과들 중 그보다 큰 값이 조회됩니다.");
+        System.out.println(calc.showResult(result));
 
-        Double findNum = 0.0;
+        Double findNum;
 
         while(true){ // 숫자만 입력받을때까지 반복
             try { // 숫자가 아닌 값이 들어오면 예외처리
@@ -83,10 +86,7 @@ public class App {
         }
 
         List<Double> findResult = calc.findAllResult(findNum); // findAllResult를 호출 후 받아온 값 저장
-
-        System.out.println(findNum + "보다 큰 결과");
-        for(Double i : findResult) {
-            System.out.println(i);
-        }
+        System.out.print(findNum + "보다 큰 결과: ");
+        System.out.println(calc.showResult(findResult));
     }
 }

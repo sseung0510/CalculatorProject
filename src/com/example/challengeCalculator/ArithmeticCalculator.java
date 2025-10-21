@@ -99,4 +99,21 @@ public class ArithmeticCalculator<T extends Number> { // 제네릭 사용, 숫�
         }
         return number;
     }
+
+    /**
+     * 값에 , 붙여주는 기능
+     */
+    public String showResult(List<T> num) {
+        int allResult = 0;
+        String allDot = "";
+
+        for(T i : num) {
+            if(allResult>0){
+                allDot += ", ";
+            }
+            allDot += i;
+            allResult++;
+        }
+        return allDot;
+    }
 }
