@@ -1,4 +1,4 @@
-package com.example.calculator;
+package com.example.calculator_lv2;
 
 import java.util.ArrayList;
 
